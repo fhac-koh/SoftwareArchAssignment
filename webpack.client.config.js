@@ -10,7 +10,7 @@ module.exports = {
   entry: './src/client/index.tsx',
   output: {
     path: path.resolve('dist'),
-    filename: '[name].js'
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]

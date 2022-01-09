@@ -1,24 +1,33 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useEffect, useState } from "react";
 
 type HelloProps = {
     name: string;
 };
 
+type ResponseProps = {
+    test: string;
+}
+
 export const Hello: React.FC<HelloProps> = (props: HelloProps) => {
     const name: string = props.name;
-    const testfetch: unknown = () => {
-        fetch(`http://localhost:3000/api/test`).catch((err) => {
-            console.log(err);
-        });
-    };
+    const [data, setData] = useState<ResponseProps>({test: "null"})
+    useEffect(() => {
+        function testfetch() {
+            fetch(`http://localhost:8080/api/test`).then(res => {
+                res.json().then(json => {
+                    setData(json)
+                })
+            }).catch(err => {
+                console.log(err)
+            });
+        };
+        testfetch()
+    }, [])
 
     return (
         <div>
             <h1>Hello {name}</h1>
-            {testfetch}
+            {data.test}
         </div>
     );
 };
-
-ReactDOM.render(<Hello name={"aa"} />, document.getElementById("index"));
