@@ -6,14 +6,15 @@
 まずはnodejsをインストールしてください。  
 このプログラムはnodejs v14.17.6で動作しますが、インストール方法は記載しません。  
 vscodeで書くことを強くおすすめします。
-他のエディタだとprettierの恩恵を受けられません。（多分）  
+他のエディタだとリント(eslint, prettier)の恩恵を受けられません。（多分）  
 とりあえず本プログラムをクローン、環境構築して手元に落としましょう。
 ```
 git clone https://github.com/fhac-koh/SoftwareArchAssignment
 cd SoftwareArchAssignment
 npm i
 ```
-ついでにvscodeの拡張機能にeslintとeditorconfig
+あとvscodeの拡張機能はリコメンドされるので全部インストしといてください。  
+リントが動くし修正されたくないファイル（このファイル）に対してvscodeのフォーマッターが動作しないようにしているので。
 
 ## 実行
 `npm run`でスクリプト実行します。
@@ -29,13 +30,15 @@ npm run dev // サーバとクライアントを並行実行する。開発中�
         fix:prettier, fix:eslint // fixの元。使わない。
         lint:prettier, lint:eslint // lintの元。これも使わない。
 ```
+`lint:prettier`は修正すべきファイルの一覧しか出ません。逆に`lint:eslint`はprettierで設定していないフォーマットエラーに対してdiff表示が出てきます。  
+prettierのフォーマット設定に関してはファイルのとこを探すしかないです。  
 `dev`はサーバがポート番号3000、クライアントは8080。8080でアクセスしてください。  
 `server`は3000番。
 `client`は8080番。
 
 ## 書き方とかコーディング規約とか
 なるだけ統一したコーディングを行いたいので規約を貼っつけます。  
-一応コード品質保持のためにeslintを使いますが、引っかかると面倒なので。
+一応コード品質保持のためにeslintとprettierを使いますが、引っかかると面倒なので。
 
 ### 変数の定義
 基本は`const`を使ってください。**`var`宣言は絶対ダメ。**  
@@ -50,7 +53,8 @@ const hoge: TYPE = variable;
 let fuga: TYPE (= init_variable);
 fuga = variable;
 ```
-です。TYPEにはOR演算子`|`を使って複数の型を持てる型にしてもいいです。
+です。文終端はセミコロンをつけてください。つけなくてもlintが勝手につけますが。  
+TYPEにはOR演算子`|`を使って複数の型を持てる型にしてもいいです。
 とりあえず型をつけてください。  
 またinit_variableがなく、再代入のされていない変数を参照するとエラーになります。tsの強みですね。  
 再代入せずにundefinedでも参照したい場合は型にundefinedをOR演算子で入れてください。  
