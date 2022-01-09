@@ -6,23 +6,25 @@ type HelloProps = {
 
 type ResponseProps = {
     test: string;
-}
+};
 
 export const Hello: React.FC<HelloProps> = (props: HelloProps) => {
     const name: string = props.name;
-    const [data, setData] = useState<ResponseProps>({test: "null"})
+    const [data, setData] = useState<ResponseProps>({ test: "null" });
     useEffect(() => {
         function testfetch() {
-            fetch(`http://localhost:8080/api/test`).then(res => {
-                res.json().then(json => {
-                    setData(json)
+            fetch(`http://localhost:8080/api/test`)
+                .then((res) => {
+                    res.json().then((json) => {
+                        setData(json);
+                    });
                 })
-            }).catch(err => {
-                console.log(err)
-            });
-        };
-        testfetch()
-    }, [])
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+        testfetch();
+    }, []);
 
     return (
         <div>
