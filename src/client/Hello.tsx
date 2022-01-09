@@ -1,9 +1,24 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 type HelloProps = {
     name: string;
 };
 
-const Hello: React.FC<HelloProps> = ({ name }) => <h1>Hello, {name}</h1>;
+export const Hello: React.FC<HelloProps> = (props: HelloProps) => {
+    const name: string = props.name;
+    const testfetch: unknown = () => {
+        fetch(`http://localhost:3000/api/test`).catch((err) => {
+            console.log(err);
+        });
+    };
 
-export default Hello;
+    return (
+        <div>
+            <h1>Hello {name}</h1>
+            {testfetch}
+        </div>
+    );
+};
+
+ReactDOM.render(<Hello name={"aa"} />, document.getElementById("index"));
