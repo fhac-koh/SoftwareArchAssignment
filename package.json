@@ -12,8 +12,8 @@
     "start": "node dist/server.js",
     "fix": "run-s fix:prettier fix:eslint",
     "lint": "run-s lint:prettier lint:eslint",
-    "fix:prettier": "prettier --write src",
-    "lint:prettier": "prettier --check src",
+    "fix:prettier": "prettier --write src || exit 0",
+    "lint:prettier": "prettier --check src || exit 0",
     "fix:eslint": "eslint src --ext .ts --fix || exit 0",
     "lint:eslint": "eslint src --ext .ts || exit 0",
     "test": "echo \"Error: no test specified\" && exit 1"
