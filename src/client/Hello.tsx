@@ -13,7 +13,7 @@ export const Hello: React.FC<HelloProps> = (props: HelloProps) => {
     const [data, setData] = useState<ResponseProps>({ test: "null" });
     useEffect(() => {
         function testfetch() {
-            fetch(`http://localhost:8080/api/test`)
+            fetch(`${process.env.REACT_APP_SERVER_HOST}/api/test`)
                 .then((res) => {
                     res.json().then((json) => {
                         setData(json);
