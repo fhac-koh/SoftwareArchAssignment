@@ -1,5 +1,5 @@
 {
-  "name": "SoftwareArch",
+  "name": "software-arch",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "run-p server client",
     "server": "ts-node-dev --no-notify ./src/server/app.ts",
-    "client": "webpack-dev-server --config ./webpack.config.dev.js",
-    "build": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
+    "client": "webpack-dev-server --config ./config/webpack.config.dev.js",
+    "build": "webpack --config ./config/webpack.client.config.js && webpack --config ./config/webpack.server.config.js",
     "start": "node dist/server.js",
     "fix": "run-s fix:prettier fix:eslint",
     "lint": "run-s lint:prettier lint:eslint",
