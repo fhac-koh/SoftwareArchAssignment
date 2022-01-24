@@ -1,0 +1,24 @@
+#NavBar--Base {
+    position: fixed;
+    background-color: #3c3c3c;
+    display: flex;
+    z-index: 1;
+    width: 100%;
+    padding: 0;
+}
+
+#NavBar--Logo {
+    float: left;
+    padding: 0 20px;
+}
+
+#NavBar--Menu {
+    width: 70%;
+    background-color: #3c3c3c;
+}
+
+#NavBar--Login {
+    margin-left: 8%;
+    pointer-events: none;
+    color: gray;
+}
