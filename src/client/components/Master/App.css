@@ -1,1 +1,9 @@
 @import "~antd/dist/antd.css";
+
+#App--Base{
+    height: 100vh;
+}
+
+#App--Content{
+    height: calc( 100% - 64px);
+}

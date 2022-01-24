@@ -1,5 +1,5 @@
 export const InnerPaths = {
-    top: "/top",
+    home: "/home",
     memoList: "/memos",
     memoDetail: "/memo",
 } as const;

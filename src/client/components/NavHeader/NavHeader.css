@@ -7,18 +7,28 @@
     padding: 0;
 }
 
+#NavBar--LeftSide {
+    width: 85%;
+}
+
+#NavBar--RightSide {
+    width: 15%;
+    min-width: 85px;
+}
+
 #NavBar--Logo {
     float: left;
     padding: 0 20px;
 }
 
 #NavBar--Menu {
-    width: 70%;
     background-color: #3c3c3c;
 }
 
 #NavBar--Login {
-    margin-left: 8%;
-    pointer-events: none;
+    float:right;
+    margin-right: 20px;
+
     color: gray;
+    pointer-events: none;
 }

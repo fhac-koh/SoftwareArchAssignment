@@ -5,6 +5,7 @@ type ResponseProps = {
 };
 
 export const MemoList: React.FC = () => {
+    console.log("memoList");
     const name = "test";
     const [data, setData] = useState<ResponseProps>({ test: "null" });
     useEffect(() => {
