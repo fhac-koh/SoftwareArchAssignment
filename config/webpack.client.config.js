@@ -16,6 +16,13 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
+    alias: {
+        "#c" : path.resolve("src","client")
+    },
+    modules: [
+        path.resolve("src"),
+        "node_modules"
+    ],
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
   module: {
@@ -26,6 +33,17 @@ module.exports = {
         use: {
           loader: 'ts-loader'
         }
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.png$/,
+        generator: {
+          filename: "images/[name][ext][query]"
+        },
+        type: "asset/resource",
       },
     ]
   },
