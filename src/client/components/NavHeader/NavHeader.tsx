@@ -19,7 +19,11 @@ export const NavHeader: React.FC = () => {
             <Header id="NavBar--Base">
                 <div id="NavBar--LeftSide">
                     <div id="NavBar--Logo">
-                        <img src={Logo} width={140} style={{ paddingBottom: 5 }} />
+                        <img
+                            src={Logo}
+                            width={140}
+                            style={{ paddingBottom: 5 }}
+                        />
                     </div>
                     <Menu
                         id="NavBar--Menu"

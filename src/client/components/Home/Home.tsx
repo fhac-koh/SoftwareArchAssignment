@@ -1,6 +1,6 @@
 import React from "react";
 
-import "#c/components/Home/Home.css"
+import "#c/components/Home/Home.css";
 
 // type ResponseProps = {
 //     test: string;
@@ -10,12 +10,8 @@ export const Home: React.FC = () => {
     console.log("home");
     return (
         <div id="Home--Base">
-            <div id="Home--Input">
-                Input!!
-            </div>
-            <div id="Home--NewList">
-                New!!!
-            </div>
+            <div id="Home--Input">Input!!</div>
+            <div id="Home--NewList">New!!!</div>
         </div>
     );
 };

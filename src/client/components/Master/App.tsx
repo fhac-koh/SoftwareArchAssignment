@@ -16,7 +16,10 @@ export const App: React.FC = () => {
                 <div id="App--Content">
                     <Routes>
                         <Route path={InnerPaths.home} element={<Home />} />
-                        <Route path={InnerPaths.memoList} element={<MemoList />} />
+                        <Route
+                            path={InnerPaths.memoList}
+                            element={<MemoList />}
+                        />
                         <Route
                             path="/*"
                             element={<Navigate to={InnerPaths.home} replace />}
