@@ -17,29 +17,33 @@ export const NavHeader: React.FC = () => {
     return (
         <Layout>
             <Header id="NavBar--Base">
-                <div id="NavBar--Logo">
-                    <img src={Logo} width={140} style={{ paddingBottom: 5 }} />
+                <div id="NavBar--LeftSide">
+                    <div id="NavBar--Logo">
+                        <img id="NavBar--LogoImage" src={Logo} />
+                    </div>
+                    <Menu
+                        id="NavBar--Menu"
+                        theme="dark"
+                        mode="horizontal"
+                        selectedKeys={[location.pathname]}
+                    >
+                        {MenuItemList.map(({ path, text }) => {
+                            return (
+                                <MenuItem key={path}>
+                                    <Link to={path}>{text}</Link>
+                                </MenuItem>
+                            );
+                        })}
+                    </Menu>
                 </div>
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    selectedKeys={[location.pathname]}
-                    id="NavBar--Menu"
-                >
-                    {MenuItemList.map(({ path, text }) => {
-                        return (
-                            <MenuItem key={path}>
-                                <Link to={path}>{text}</Link>
-                            </MenuItem>
-                        );
-                    })}
-                </Menu>
-                <Link to="/login" id="NavBar--Login">
-                    {" "}
-                    LOG IN <UserOutlined />
-                </Link>
+                <div id="NavBar--RightSide">
+                    <Link to="/login" id="NavBar--Login">
+                        {" "}
+                        LOG IN <UserOutlined />
+                    </Link>
+                </div>
             </Header>
-            <div style={{ marginTop: 64 }} />
+            <div id="NavBar--Margin" />
         </Layout>
     );
 };

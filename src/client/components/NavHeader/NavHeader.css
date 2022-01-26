@@ -1,24 +1,43 @@
 #NavBar--Base {
-    position: fixed;
-    background-color: #3c3c3c;
-    display: flex;
-    z-index: 1;
     width: 100%;
+    z-index: 1;
     padding: 0;
+    background-color: #3c3c3c;
+    position: fixed;
+    display: flex;
+}
+
+#NavBar--LeftSide {
+    width: 85%;
+}
+
+#NavBar--RightSide {
+    width: 15%;
+    min-width: 85px;
 }
 
 #NavBar--Logo {
-    float: left;
     padding: 0 20px;
+    float: left;
+}
+
+#NavBar--LogoImage {
+    width: 140px;
+    padding-bottom: 5;
 }
 
 #NavBar--Menu {
-    width: 70%;
+    height: 100%;
     background-color: #3c3c3c;
 }
 
 #NavBar--Login {
-    margin-left: 8%;
-    pointer-events: none;
+    margin-right: 20px;
+    float: right;
     color: gray;
+    pointer-events: none;
+}
+
+#NavBar--Margin {
+    margin-top: 64px;
 }

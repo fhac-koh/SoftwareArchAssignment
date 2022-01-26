@@ -7,8 +7,8 @@ interface ListItemProps {
 
 export const MenuItemList: ListItemProps[] = [
     {
-        path: InnerPaths.top,
-        text: "TOP",
+        path: InnerPaths.home,
+        text: "HOME",
     },
     {
         path: InnerPaths.memoList,
