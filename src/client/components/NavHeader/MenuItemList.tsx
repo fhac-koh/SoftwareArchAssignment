@@ -1,4 +1,4 @@
-import  { InnerPaths } from "#c/routes/InnerPaths";
+import { InnerPaths } from "#c/routes/InnerPaths";
 
 interface ListItemProps {
     readonly path: string;
