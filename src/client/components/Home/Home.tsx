@@ -1,17 +1,20 @@
 import React from "react";
 
-import "#c/components/Home/Home.css";
+import { InputForm } from "#c/components/Home/InputForm/InputForm";
+import { NewMemoList } from "#c/components/Home/NewMemoList/NewMemoList";
 
-// type ResponseProps = {
-//     test: string;
-// };
+import "#c/components/Home/Home.css";
 
 export const Home: React.FC = () => {
     console.log("home");
     return (
         <div id="Home--Base">
-            <div id="Home--Input">Input!!</div>
-            <div id="Home--NewList">New!!!</div>
+            <div id="Home--Input">
+                <InputForm />
+            </div>
+            <div id="Home--NewList">
+                <NewMemoList />
+            </div>
         </div>
     );
 };

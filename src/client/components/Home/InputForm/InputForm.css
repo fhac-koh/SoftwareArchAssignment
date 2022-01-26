@@ -1,0 +1,27 @@
+/* title + submit = 156px ≒ 160px */
+
+#InputForm--Base{
+    height: 100%;
+    padding-left: 35px;
+}
+
+#InputForm--Title{
+    max-width: 66%;
+    padding-top: 20px;
+}
+
+#InputForm--Body {
+    max-width: 95%;
+}
+
+#InputForm--Body--TextArea {
+    height: calc( (100vh - 64px) - 160px );
+    min-height: 340px;
+}
+
+#InputForm--Submit{
+    margin-right: 20px;
+    float: right;
+}
+
+
