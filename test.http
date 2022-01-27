@@ -1,0 +1,12 @@
+GET http://localhost:3000/memo HTTP/1.0
+content-type: application/json
+
+####
+
+POST http://localhost:3000/memo HTTP/1.0
+content-type: application/json
+
+{
+    "title": "title test",
+    "memo": "memo test"
+}

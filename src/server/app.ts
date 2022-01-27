@@ -4,7 +4,7 @@ import { createEngine } from "./createEngine";
 import path from "path";
 import cors from "cors";
 
-import MemoRouter from './router/MemoRouter';
+import MemoRouter from "./router/MemoRouter";
 
 const app = express();
 
@@ -13,6 +13,7 @@ const isTsNodeDev = Object.keys(require.cache).some((path) =>
 );
 const ext = isTsNodeDev ? "tsx" : "js";
 
+app.use(express.json());
 app.use(express.static(path.join("./dist")));
 app.use(cors());
 
