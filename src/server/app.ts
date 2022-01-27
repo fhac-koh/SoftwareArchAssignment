@@ -4,6 +4,8 @@ import { createEngine } from "./createEngine";
 import path from "path";
 import cors from "cors";
 
+import MemoRouter from './router/MemoRouter';
+
 const app = express();
 
 const isTsNodeDev = Object.keys(require.cache).some((path) =>
@@ -17,6 +19,8 @@ app.use(cors());
 app.set("views", path.join(__dirname, "..", "client"));
 app.set("view engine", ext);
 app.engine(ext, createEngine());
+
+app.use("/memo", MemoRouter);
 
 app.get("/api/test", (req, res) => {
     res.json({ test: __dirname });
