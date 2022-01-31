@@ -27,37 +27,16 @@ export const Home: React.FC = () => {
         setRequireReload: setRequireReload,
     };
 
-    console.log("home");
-    console.log("now", requireReload);
-    const [addisional, setAddisional] = useState<DataProps[]>([]);
-    const add = {
-        addisional: addisional,
-        setAddisional: setAddisional,
-    };
-
     return (
         <div id="Home--Base">
-            <testContext.Provider value={add}>
-                <StatusContext.Provider value={homeState}>
-                    <div id="Home--Input">
-                        <InputForm />
-                    </div>
-                    <div id="Home--NewList">
-                        <NewMemoList />
-                    </div>
-                </StatusContext.Provider>
-            </testContext.Provider>
+            <StatusContext.Provider value={homeState}>
+                <div id="Home--Input">
+                    <InputForm />
+                </div>
+                <div id="Home--NewList">
+                    <NewMemoList />
+                </div>
+            </StatusContext.Provider>
         </div>
     );
 };
-
-export const testContext = createContext({
-    addisional: [] as DataProps[],
-    setAddisional: {} as Dispatch<SetStateAction<DataProps[]>>,
-});
-
-interface DataProps {
-    key: string;
-    title: string;
-    date: string;
-}

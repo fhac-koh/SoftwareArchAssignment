@@ -1,28 +1,16 @@
 import React, { useContext } from "react";
-
-import "#c/components/MemoDetail/DisplayMemo/DisplayMemo.css";
 import { Button, Form, Input } from "antd";
 import { RollbackOutlined, SendOutlined } from "@ant-design/icons";
 
 import { MemoStatus } from "#c/components/MemoDetail/MemoDetail";
 import { SetEditStatus } from "#c/components/MemoDetail/DisplayMemo/DisplayMemo";
+import { updateMemo } from "#c/routes/ServerApi";
+import { FailedFinishProps, InputMemoProps } from "#c/types/interfaces";
 
 import "#c/components/MemoDetail/DisplayMemo/DisplayMemo.css";
-import { updateMemo } from "#c/routes/ServerApi";
 
 const { TextArea } = Input;
 const { Item: FormItem } = Form;
-
-interface InputProps {
-    title: string;
-    text: string;
-}
-
-interface FailedProps {
-    values: unknown;
-    errorFields: unknown;
-    outOfDate: unknown;
-}
 
 const required = {
     rules: [{ required: true }],
@@ -30,7 +18,7 @@ const required = {
 
 export const EditMode: React.FC = () => {
     const [form] = Form.useForm();
-    const { id, title, text } = useContext(MemoStatus);
+    const { id, title, text, requireLoad } = useContext(MemoStatus);
     const setOnEdit = useContext(SetEditStatus);
 
     return (
@@ -52,7 +40,7 @@ export const EditMode: React.FC = () => {
                 <div id="MemoDetail--BodyZone">
                     <FormItem name="text" {...required}>
                         <TextArea
-                            autoSize={{ minRows: 12, maxRows: 100 }}
+                            autoSize={{ maxRows: 100 }}
                             maxLength={1000}
                             showCount
                             bordered={false}
@@ -87,13 +75,20 @@ export const EditMode: React.FC = () => {
         </Form>
     );
 
-    function onFinish(values: InputProps) {
-        console.log(JSON.stringify(values, null, 2), id);
-        updateMemo(values, id).catch((err) => console.log(err));
-        setOnEdit(false);
+    function onFinish(values: InputMemoProps) {
+        updateMemo(values, id)
+            .then(() => {
+                setOnEdit(false);
+                requireLoad(true);
+            })
+            .catch((err) => console.log(err));
     }
 
-    function onFinishFailed({ values, errorFields, outOfDate }: FailedProps) {
+    function onFinishFailed({
+        values,
+        errorFields,
+        outOfDate,
+    }: FailedFinishProps) {
         console.log("error!");
         console.log(values, errorFields, outOfDate);
     }

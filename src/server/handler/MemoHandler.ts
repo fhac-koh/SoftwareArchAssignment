@@ -4,8 +4,12 @@ import repository from "../repository/MemoRepository";
 
 export default class handler {
     static getAllMemo(req: express.Request, res: express.Response) {
+        const headVal = req.headers.sortval;
+        const headOrder = req.headers.sortorder;
+        const val = typeof headVal === "string" ? headVal : "date";
+        const order = headOrder === "DESC" ? -1 : 1;
         repository
-            .getAllMemo()
+            .getAllMemo(val, order)
             .then((memo) => {
                 res.send(memo);
             })
