@@ -6,9 +6,11 @@ import { RollbackOutlined, SendOutlined } from "@ant-design/icons";
 
 import { MemoStatus } from "#c/components/MemoDetail/MemoDetail";
 import { SetEditStatus } from "#c/components/MemoDetail/DisplayMemo/DisplayMemo";
-// import { InnerPaths } from "#c/routes/InnerPaths";
 
 import "#c/components/MemoDetail/DisplayMemo/DisplayMemo.css";
+import { updateMemo } from "#c/routes/ServerApi";
+import { useNavigate } from "react-router-dom";
+import { InnerPaths } from "#c/routes/InnerPaths";
 
 const { TextArea } = Input;
 const { Item: FormItem } = Form;
@@ -29,6 +31,7 @@ const required = {
 };
 
 export const EditMode: React.FC = () => {
+    const redirect = useNavigate();
     const [form] = Form.useForm();
     const { id, title, text } = useContext(MemoStatus);
     const setOnEdit = useContext(SetEditStatus);
@@ -89,8 +92,10 @@ export const EditMode: React.FC = () => {
 
     function onFinish(values: InputProps) {
         console.log(JSON.stringify(values, null, 2), id);
-        // updateMemo(JSON.stringify(values, null, 2),id).catch((err) => console.log(err));
-        setOnEdit(false);
+        updateMemo(values, id).then(()=>{
+            setOnEdit(false);
+            redirect(InnerPaths.memoDetail(id));
+        }).catch((err) => console.log(err));
     }
 
     function onFinishFailed({ values, errorFields, outOfDate }: FailedProps) {

@@ -19,6 +19,8 @@ npm i
 ```
 REACT_APP_SERVER_HOST="http://localhost:3000"
 ```
+[追記: 2022/1/27]
+MongoDBを導入しました。バージョンはv3.6.8です。インストール方法は調べてください。
 
 ## 実行
 `npm run`でスクリプト実行します。

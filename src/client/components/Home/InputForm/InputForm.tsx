@@ -4,8 +4,8 @@ import { Button, Form, Input } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 
 import "#c/components/Home/InputForm/InputForm.css";
-import { StatusContext, testContext } from "#c/components/Home/Home";
-// import { postNewMemo } from "#c/routes/ServerApi";
+import { StatusContext } from "#c/components/Home/Home";
+import { postNewMemo } from "#c/routes/ServerApi";
 
 const { TextArea } = Input;
 const { Item: FormItem } = Form;
@@ -26,8 +26,6 @@ const required = {
 };
 
 export const InputForm: React.FC = () => {
-    const add = useContext(testContext);
-
     const homeState = useContext(StatusContext);
     const [form] = Form.useForm();
 
@@ -69,15 +67,7 @@ export const InputForm: React.FC = () => {
     );
 
     function onFinish(values: InputProps) {
-        console.log(JSON.stringify(values, null, 2));
-        add.setAddisional(
-            add.addisional.concat({
-                key: "a",
-                title: values.title,
-                date: "now!!!",
-            })
-        );
-        // postNewMemo(JSON.stringify(values, null, 2)).catch((err) => console.log(err));
+        postNewMemo(values).catch((err) => console.log(err));
         homeState.setRequireReload(true);
     }
 

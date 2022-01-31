@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Table } from "antd";
 
-import { StatusContext, testContext } from "#c/components/Home/Home";
+import { StatusContext } from "#c/components/Home/Home";
 import { InnerPaths } from "#c/routes/InnerPaths";
 import { resolveHeader } from "#c/utils/tableUtils";
-// import { getMemoList } from "#c/routes/ServerApi";
+import { getMemoList } from "#c/routes/ServerApi";
 
 import "#c/components/Home/NewMemoList/NewMemoList.css";
-
-import TestMemoList from "dummy/memoListFromServer.json";
 
 const headerData = resolveHeader("title", "date");
 interface DataProps {
@@ -19,12 +17,10 @@ interface DataProps {
 }
 
 export const NewMemoList: React.FC = () => {
-    const add = useContext(testContext);
-
     const redirect = useNavigate();
     const homeState = useContext(StatusContext);
     const [tableData, setTableData] = useState<DataProps[]>([]);
-    //const [ loading, setLoading ] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     // table body's max height : 64, 0.9, 82 are other elements height
     const tableScrollControl =
@@ -32,37 +28,18 @@ export const NewMemoList: React.FC = () => {
 
     useEffect(() => {
         if (homeState.requireReload === true) {
-            const { memoList } = TestMemoList;
-            console.log(memoList);
-            setTableData(
-                memoList
-                    .map(({ memoId, title, date }): DataProps => {
-                        return {
-                            key: memoId,
-                            title:
-                                title.length >= 20
-                                    ? title.slice(0, 20) + "…"
-                                    : title,
-                            date: date,
-                        };
-                    })
-                    .concat(add.addisional)
-                    .slice(0, 15)
-            );
+            setLoading(true);
             homeState.setRequireReload(false);
+            getMemoList({ SortConf: "date", StartNum: "1" })
+                .then((result) => {
+                    setTableData(result);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         }
     }, [homeState.requireReload]);
-
-    // useEffect(() => {
-    //     if(homeState.requireReload === true){
-    //         setLoading(true);
-    //         homeState.setRequireReload(false);
-    //         getMemoList({"SortConf": "date", "StartNum": "1"}).then((result) => {
-    //             setTableData(result);
-    //             setLoading(false);
-    //         }).catch((err) => {console.log(err)});
-    //     }
-    // },[homeState.requireReload]);
 
     return (
         <div id="NewMemoList--Base">
@@ -72,7 +49,7 @@ export const NewMemoList: React.FC = () => {
                     <Table
                         columns={headerData}
                         dataSource={tableData}
-                        //loading={loading}
+                        loading={loading}
                         size="middle"
                         pagination={false}
                         scroll={{ y: tableScrollControl }}
@@ -94,5 +71,3 @@ export const NewMemoList: React.FC = () => {
         redirect(InnerPaths.memoDetail(record.key));
     }
 };
-
-
