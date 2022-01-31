@@ -1,0 +1,14 @@
+#Home--Base {
+    height: 100%;
+    min-height: 500px;
+    min-width: 1200px;
+    display: flex;
+}
+
+#Home--Input {
+    width: 70%;
+}
+
+#Home--NewList {
+    width: 30%;
+}

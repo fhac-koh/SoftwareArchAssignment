@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-type HelloProps = {
-    name: string;
-};
-
 type ResponseProps = {
     test: string;
 };
 
-export const Hello: React.FC<HelloProps> = (props: HelloProps) => {
-    const name: string = props.name;
+export const MemoList: React.FC = () => {
+    console.log("memoList");
+    const name = "test";
     const [data, setData] = useState<ResponseProps>({ test: "null" });
     useEffect(() => {
         function testfetch() {
@@ -28,7 +25,7 @@ export const Hello: React.FC<HelloProps> = (props: HelloProps) => {
 
     return (
         <div>
-            <h1>Hello {name}</h1>
+            <h1>MemoList {name}</h1>
             {data.test}
         </div>
     );

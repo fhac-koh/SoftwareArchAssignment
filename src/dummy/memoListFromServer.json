@@ -1,0 +1,19 @@
+{
+    "__comment": "this is provisional. you can rewrite this json if you have another idea.",
+    "__comment2": "for example : server should send memo list with memo body(text)!",
+
+    "memoList": [
+        {
+            "memoId": "xxxx",
+            "title": "test title aaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "date": "1970/01/01 00:01",
+            "other status": { "for example": "author, ..." }
+        },
+        {
+            "memoId": "yyyy",
+            "title": "あああああああああああああああああああああああああああああああああああああああああああああああああああ",
+            "date": "1970/01/01 00:02",
+            "other status": { "for example": "author, ..." }
+        }
+    ]
+}
