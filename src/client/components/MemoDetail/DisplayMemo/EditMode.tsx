@@ -6,9 +6,9 @@ import { RollbackOutlined, SendOutlined } from "@ant-design/icons";
 
 import { MemoStatus } from "#c/components/MemoDetail/MemoDetail";
 import { SetEditStatus } from "#c/components/MemoDetail/DisplayMemo/DisplayMemo";
-// import { InnerPaths } from "#c/routes/InnerPaths";
 
 import "#c/components/MemoDetail/DisplayMemo/DisplayMemo.css";
+import { updateMemo } from "#c/routes/ServerApi";
 
 const { TextArea } = Input;
 const { Item: FormItem } = Form;
@@ -89,7 +89,7 @@ export const EditMode: React.FC = () => {
 
     function onFinish(values: InputProps) {
         console.log(JSON.stringify(values, null, 2), id);
-        // updateMemo(JSON.stringify(values, null, 2),id).catch((err) => console.log(err));
+        updateMemo(values, id).catch((err) => console.log(err));
         setOnEdit(false);
     }
 

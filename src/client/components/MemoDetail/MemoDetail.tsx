@@ -5,9 +5,8 @@ import { DisplayIcon } from "#c/components/MemoDetail/DisplayIcon";
 
 import "#c/components/MemoDetail/MemoDetail.css";
 
-import TestData from "dummy/memoDetailFromServer.json";
 import { DisplayMemo } from "./DisplayMemo/DisplayMemo";
-// import { getMemoDetail } from "#c/routes/ServerApi";
+import { getMemoDetail } from "#c/routes/ServerApi";
 
 interface statusAbstract {
     id: string;
@@ -29,15 +28,13 @@ export const MemoDetail: React.FC = () => {
 
     useEffect(() => {
         setLoading(true);
-        setMemo({
-            title: TestData.title,
-            text: TestData.text,
-        });
-        setLoading(false);
-        // getMemoDetail(memoId).then((result) => {
-        //     setMemo(result);
-        //     setLoading(false);
-        // }).catch((err) => console.log(err));
+        getMemoDetail(memoId)
+            .then((result) => {
+                console.log(result);
+                setMemo(result);
+                setLoading(false);
+            })
+            .catch((err) => console.log(err));
     }, []);
 
     const memoValue: statusAbstract = {

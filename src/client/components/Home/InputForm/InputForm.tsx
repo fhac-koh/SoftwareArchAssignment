@@ -5,7 +5,7 @@ import { SendOutlined } from "@ant-design/icons";
 
 import "#c/components/Home/InputForm/InputForm.css";
 import { StatusContext, testContext } from "#c/components/Home/Home";
-// import { postNewMemo } from "#c/routes/ServerApi";
+import { postNewMemo } from "#c/routes/ServerApi";
 
 const { TextArea } = Input;
 const { Item: FormItem } = Form;
@@ -69,7 +69,6 @@ export const InputForm: React.FC = () => {
     );
 
     function onFinish(values: InputProps) {
-        console.log(JSON.stringify(values, null, 2));
         add.setAddisional(
             add.addisional.concat({
                 key: "a",
@@ -77,7 +76,7 @@ export const InputForm: React.FC = () => {
                 date: "now!!!",
             })
         );
-        // postNewMemo(JSON.stringify(values, null, 2)).catch((err) => console.log(err));
+        postNewMemo(values).catch((err) => console.log(err));
         homeState.setRequireReload(true);
     }
 

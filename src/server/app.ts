@@ -21,7 +21,7 @@ app.set("views", path.join(__dirname, "..", "client"));
 app.set("view engine", ext);
 app.engine(ext, createEngine());
 
-app.use("/memo", MemoRouter);
+app.use("/api/memos", MemoRouter);
 
 app.get("/api/test", (req, res) => {
     res.json({ test: __dirname });
