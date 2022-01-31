@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Table } from "antd";
 
 import { StatusContext, testContext } from "#c/components/Home/Home";
-import TestMemoList from "dummy/memoListFromServer.json";
+import { InnerPaths } from "#c/routes/InnerPaths";
+import { resolveHeader } from "#c/utils/tableUtils";
+// import { getMemoList } from "#c/routes/ServerApi";
 
 import "#c/components/Home/NewMemoList/NewMemoList.css";
-import { useNavigate } from "react-router-dom";
-import { InnerPaths } from "#c/routes/InnerPaths";
-// import { getMemoList } from "#c/routes/ServerApi";
+
+import TestMemoList from "dummy/memoListFromServer.json";
 
 const headerData = resolveHeader("title", "date");
 interface DataProps {
@@ -93,11 +95,4 @@ export const NewMemoList: React.FC = () => {
     }
 };
 
-function resolveHeader(...attribute: string[]) {
-    return attribute.map((str) => {
-        return {
-            title: str.charAt(0).toUpperCase() + str.slice(1),
-            dataIndex: str,
-        };
-    });
-}
+
