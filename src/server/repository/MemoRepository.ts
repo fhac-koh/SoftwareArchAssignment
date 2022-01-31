@@ -10,13 +10,17 @@ interface InputProps {
 }
 
 export default class repository {
-    static async getAllMemo() {
+    static async getAllMemo(val: string, order: 1 | -1) {
         const client = await MongoClient.connect(DBURL);
         if (!client) {
             return null;
         }
         const db = client.db(DBName);
-        const memos = await db.collection(DBName).find().toArray();
+        const memos = await db
+            .collection(DBName)
+            .find()
+            .sort({ [val]: order })
+            .toArray();
         client.close();
         return { memoList: memos };
     }

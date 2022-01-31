@@ -8,16 +8,18 @@
     height: calc((100vh - 64px) * 0.9);
     min-height: 450px;
     padding: 5px;
+    border: 1px outset;
     border-radius: 10px;
     background-color: gray;
 }
 
 #NewMemoList--Head {
-    height: 25px;
+    height: 35px;
+    font-size: 20px;
 }
 
 #NewMemoList--Table {
-    height: calc((100vh - 64px) * 0.9 - 35px);
+    height: calc((100vh - 64px) * 0.9 - 50px);
     border-radius: 2px;
     background-color: white;
 }
@@ -26,8 +28,12 @@
     background-color: whitesmoke;
 }
 
-#NewMemoList--Table tbody td {
+#NewMemoList--Table tbody tr {
     cursor: pointer;
+}
+
+#NewMemoList--Table tbody tr:hover td {
+    background-color: silver;
 }
 
 #NewMemoList--Table .ant-table-body::-webkit-scrollbar {

@@ -1,5 +1,6 @@
 import React from "react";
 import { LoadingOutlined } from "@ant-design/icons";
+
 import "#c/components/MemoDetail/DisplayIcon.css";
 
 export const DisplayIcon: React.FC = () => {

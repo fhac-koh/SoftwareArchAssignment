@@ -1,15 +1,14 @@
 import React, { useContext } from "react";
-
-import "#c/components/MemoDetail/DisplayMemo/DisplayMemo.css";
+import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 import { MemoStatus } from "#c/components/MemoDetail/MemoDetail";
-import { SetEditStatus } from "#c/components/MemoDetail/DisplayMemo/DisplayMemo";
 import { deleteMemo } from "#c/routes/ServerApi";
+import { SetEditStatus } from "#c/components/MemoDetail/DisplayMemo/DisplayMemo";
 
 import "#c/components/MemoDetail/DisplayMemo/DisplayMemo.css";
-import { useNavigate } from "react-router-dom";
+
 import { InnerPaths } from "#c/routes/InnerPaths";
 
 const buttonBase = {

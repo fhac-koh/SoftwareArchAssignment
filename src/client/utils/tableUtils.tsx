@@ -1,8 +1,10 @@
-export function resolveHeader(...attribute: string[]) {
+export const resolveHeader = (...attribute: [string, number][]) => {
     return attribute.map((str) => {
+        const [name, width] = str;
         return {
-            title: str.charAt(0).toUpperCase() + str.slice(1),
-            dataIndex: str,
+            title: name.charAt(0).toUpperCase() + name.slice(1),
+            dataIndex: name,
+            width: `${width}%`,
         };
     });
-}
+};

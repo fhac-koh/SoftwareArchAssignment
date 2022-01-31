@@ -26,7 +26,7 @@ export const App: React.FC = () => {
                             element={<MemoDetail />}
                         />
                         <Route
-                            path="/*"
+                            path="*"
                             element={<Navigate to={InnerPaths.home} replace />}
                         />
                     </Routes>

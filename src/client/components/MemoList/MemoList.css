@@ -3,16 +3,55 @@
     min-width: 1200px;
     min-height: 500px;
     padding: 3% 10%;
-    background-color: aqua;
 }
 
 #MemoList--Component {
     height: 100%;
-    background-color: red;
 }
 
-
+#MemoList--Header {
+    display: flex;
+    width: 100%;
+}
 
 #MemoList--Title {
     font-size: 40px;
+}
+
+#MemoList--RightSide {
+    display: flex;
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+#MemoList--SortTitle {
+    width: 70px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px gray solid;
+    border-radius: 2px;
+    background-color: rgba(135, 206, 250);
+}
+
+#MemoList--Order {
+    width: 70px;
+}
+
+#MemoList--Table {
+    border-radius: 2px;
+    background-color: white;
+    border: 1px inset;
+}
+
+#MemoList--Table th {
+    background-color: ghostwhite;
+}
+
+#MemoList--Table tbody td {
+    cursor: pointer;
+}
+
+#MemoList--Table tbody tr:hover td {
+    background-color: silver;
 }

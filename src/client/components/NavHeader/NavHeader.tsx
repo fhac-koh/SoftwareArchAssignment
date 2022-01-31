@@ -13,7 +13,6 @@ const { Item: MenuItem } = Menu;
 
 export const NavHeader: React.FC = () => {
     const location = useLocation();
-    console.log("render Nav");
 
     return (
         <Layout>
