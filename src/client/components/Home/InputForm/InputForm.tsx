@@ -11,14 +11,14 @@ const { TextArea } = Input;
 const { Item: FormItem } = Form;
 
 interface InputProps {
-    title: string,
-    text: string
+    title: string;
+    text: string;
 }
 
 interface FailedProps {
-    values: unknown,
-    errorFields: unknown,
-    outOfDate: unknown,
+    values: unknown;
+    errorFields: unknown;
+    outOfDate: unknown;
 }
 
 const required = {
@@ -33,10 +33,11 @@ export const InputForm: React.FC = () => {
 
     return (
         <Form
-        id="InputForm--Base"
-        form={form}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}>
+            id="InputForm--Base"
+            form={form}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+        >
             <div id="InputForm--Title">
                 <FormItem name="title" {...required}>
                     <Input
@@ -69,18 +70,19 @@ export const InputForm: React.FC = () => {
 
     function onFinish(values: InputProps) {
         console.log(JSON.stringify(values, null, 2));
-        add.setAddisional(add.addisional.concat({
-            key: "a",
-            title: values.title,
-            date: "now!!!"
-        }));
+        add.setAddisional(
+            add.addisional.concat({
+                key: "a",
+                title: values.title,
+                date: "now!!!",
+            })
+        );
         // postNewMemo(JSON.stringify(values, null, 2)).catch((err) => console.log(err));
         homeState.setRequireReload(true);
-
     }
 
-    function onFinishFailed({values,errorFields,outOfDate} : FailedProps){
+    function onFinishFailed({ values, errorFields, outOfDate }: FailedProps) {
         console.log("error!");
-        console.log(values,errorFields,outOfDate);
+        console.log(values, errorFields, outOfDate);
     }
 };

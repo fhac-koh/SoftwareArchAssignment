@@ -4,25 +4,24 @@ import "#c/components/MemoDetail/DisplayMemo/DisplayMemo.css";
 import { Button, Form, Input } from "antd";
 import { RollbackOutlined, SendOutlined } from "@ant-design/icons";
 
-import { MemoStatus } from "#c/components/MemoDetail/MemoDetail"
+import { MemoStatus } from "#c/components/MemoDetail/MemoDetail";
 import { SetEditStatus } from "#c/components/MemoDetail/DisplayMemo/DisplayMemo";
 // import { InnerPaths } from "#c/routes/InnerPaths";
 
 import "#c/components/MemoDetail/DisplayMemo/DisplayMemo.css";
 
-
 const { TextArea } = Input;
 const { Item: FormItem } = Form;
 
 interface InputProps {
-    title: string,
-    text: string
+    title: string;
+    text: string;
 }
 
 interface FailedProps {
-    values: unknown,
-    errorFields: unknown,
-    outOfDate: unknown,
+    values: unknown;
+    errorFields: unknown;
+    outOfDate: unknown;
 }
 
 const required = {
@@ -34,35 +33,31 @@ export const EditMode: React.FC = () => {
     const { id, title, text } = useContext(MemoStatus);
     const setOnEdit = useContext(SetEditStatus);
 
-
-    return(
+    return (
         <Form
             id="MemoDetail--DisplayMemo"
             form={form}
-            initialValues={{title: title, text:text}}
+            initialValues={{ title: title, text: text }}
             onFinish={onFinish}
-            onFinishFailed={onFinishFailed}>
+            onFinishFailed={onFinishFailed}
+        >
             <div id="MemoDetail--TitleVar">
                 <div id="MemoDetail--TitleZone">
                     <FormItem name="title" {...required}>
-                        <Input
-                            maxLength={50}
-                            showCount
-                            bordered={false}
-                        />
+                        <Input maxLength={50} showCount bordered={false} />
                     </FormItem>
                 </div>
             </div>
             <div id="MemoDetail--BodyVar">
                 <div id="MemoDetail--BodyZone">
-                        <FormItem name="text" {...required}>
-                            <TextArea
-                                autoSize={{ minRows: 12, maxRows: 100}}
-                                maxLength={1000}
-                                showCount
-                                bordered={false}
-                            />
-                        </FormItem>
+                    <FormItem name="text" {...required}>
+                        <TextArea
+                            autoSize={{ minRows: 12, maxRows: 100 }}
+                            maxLength={1000}
+                            showCount
+                            bordered={false}
+                        />
+                    </FormItem>
                 </div>
             </div>
             <div id="MemoDetail--Buttons">
@@ -71,31 +66,35 @@ export const EditMode: React.FC = () => {
                         id="MemoDetail--Submit"
                         type="primary"
                         htmlType="submit"
-                        onClick={() => setOnEdit(true)}>
-                        Submit<SendOutlined/>
+                        onClick={() => setOnEdit(true)}
+                    >
+                        Submit
+                        <SendOutlined />
                     </Button>
                 </FormItem>
-                <div id="MemoDetail--ButtonMargin"/>
+                <div id="MemoDetail--ButtonMargin" />
                 <Button
                     id="MemoDetail--Cancel"
                     type="dashed"
                     size="large"
                     onClick={() => setOnEdit(false)}
-                    danger>
-                        Cancel<RollbackOutlined/>
+                    danger
+                >
+                    Cancel
+                    <RollbackOutlined />
                 </Button>
             </div>
-       </Form>
+        </Form>
     );
 
     function onFinish(values: InputProps) {
-        console.log(JSON.stringify(values, null, 2),id);
+        console.log(JSON.stringify(values, null, 2), id);
         // updateMemo(JSON.stringify(values, null, 2),id).catch((err) => console.log(err));
         setOnEdit(false);
     }
 
-    function onFinishFailed({values,errorFields,outOfDate} : FailedProps){
+    function onFinishFailed({ values, errorFields, outOfDate }: FailedProps) {
         console.log("error!");
-        console.log(values,errorFields,outOfDate);
+        console.log(values, errorFields, outOfDate);
     }
-}
+};

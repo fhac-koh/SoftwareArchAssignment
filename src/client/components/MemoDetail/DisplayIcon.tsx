@@ -1,16 +1,13 @@
 import React from "react";
 import { LoadingOutlined } from "@ant-design/icons";
-import "#c/components/MemoDetail/DisplayIcon.css"
+import "#c/components/MemoDetail/DisplayIcon.css";
 
 export const DisplayIcon: React.FC = () => {
-    return(
+    return (
         <div id="MemoDetail--DisplayIcon">
             <div id="MemoDetail--WrapIcon">
-                <LoadingOutlined id="MemoDetail--LoadingIcon"/>
+                <LoadingOutlined id="MemoDetail--LoadingIcon" />
             </div>
         </div>
     );
 };
-
-
-

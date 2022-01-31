@@ -2,7 +2,7 @@
     "__comment": "this is provisional. you can rewrite this json if you have another idea.",
 
     "title": "test",
-    "text" : "a\na\na\n",
+    "text": "a\na\na\n",
     "other status": {
         "for example": "author, importance, deadline, tags, ..."
     }

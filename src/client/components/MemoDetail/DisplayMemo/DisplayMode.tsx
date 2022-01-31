@@ -4,7 +4,7 @@ import "#c/components/MemoDetail/DisplayMemo/DisplayMemo.css";
 import { Button } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
-import { MemoStatus } from "#c/components/MemoDetail/MemoDetail"
+import { MemoStatus } from "#c/components/MemoDetail/MemoDetail";
 import { SetEditStatus } from "#c/components/MemoDetail/DisplayMemo/DisplayMemo";
 import { deleteMemo } from "#c/routes/ServerApi";
 
@@ -22,7 +22,7 @@ export const DisplayMode: React.FC = () => {
     const { id, title, text } = useContext(MemoStatus);
     const setOnEdit = useContext(SetEditStatus);
 
-    return(
+    return (
         <div id="MemoDetail--DisplayMemo">
             <div id="MemoDetail--TitleVar">
                 <div id="MemoDetail--TitleZone">
@@ -38,23 +38,28 @@ export const DisplayMode: React.FC = () => {
                 <Button
                     id="MemoDetail--Edit"
                     {...buttonBase}
-                    onClick={() => setOnEdit(true)}>
-                    Edit<EditOutlined/>
+                    onClick={() => setOnEdit(true)}
+                >
+                    Edit
+                    <EditOutlined />
                 </Button>
-                <div id="MemoDetail--ButtonMargin"/>
+                <div id="MemoDetail--ButtonMargin" />
                 <Button
                     id="MemoDetail--Delete"
                     {...buttonBase}
                     onClick={deleteOnClick}
-                    danger>
-                        Delete<DeleteOutlined/>
+                    danger
+                >
+                    Delete
+                    <DeleteOutlined />
                 </Button>
             </div>
-       </div>
+        </div>
     );
 
-    function deleteOnClick(){
-        deleteMemo(id).catch((err) => console.log(err))
+    function deleteOnClick() {
+        deleteMemo(id)
+            .catch((err) => console.log(err))
             .finally(() => redirect(InnerPaths.home));
     }
-}
+};

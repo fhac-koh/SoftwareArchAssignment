@@ -10,50 +10,51 @@ import { DisplayMemo } from "./DisplayMemo/DisplayMemo";
 // import { getMemoDetail } from "#c/routes/ServerApi";
 
 interface statusAbstract {
-    id: string,
-    title: string,
-    text: string,
+    id: string;
+    title: string;
+    text: string;
 }
 
 export const MemoStatus = createContext<statusAbstract>({
     id: "",
     title: "",
     text: "",
-})
+});
 
 export const MemoDetail: React.FC = () => {
     const params = useParams();
     const memoId = params.memoId !== undefined ? params.memoId : "-";
-    const [ memo, setMemo ] = useState({title: "", text: ""});
-    const [ loading, setLoading] = useState(false);
+    const [memo, setMemo] = useState({ title: "", text: "" });
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true);
         setMemo({
             title: TestData.title,
-            text: TestData.text
-        })
+            text: TestData.text,
+        });
         setLoading(false);
         // getMemoDetail(memoId).then((result) => {
         //     setMemo(result);
         //     setLoading(false);
         // }).catch((err) => console.log(err));
-    },[])
+    }, []);
 
-    const memoValue : statusAbstract = {
+    const memoValue: statusAbstract = {
         id: memoId,
         title: memo.title,
-        text: memo.text
-    }
+        text: memo.text,
+    };
 
-    return(
+    return (
         <div id="MemoDetail--Base">
-            { loading ?
-                <DisplayIcon /> :
+            {loading ? (
+                <DisplayIcon />
+            ) : (
                 <MemoStatus.Provider value={memoValue}>
                     <DisplayMemo />
                 </MemoStatus.Provider>
-            }
+            )}
         </div>
     );
 };
