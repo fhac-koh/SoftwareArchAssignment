@@ -1,44 +1,63 @@
-import React from "react";
+import React, {
+    createContext,
+    Dispatch,
+    SetStateAction,
+    useState,
+} from "react";
 
 import { InputForm } from "#c/components/Home/InputForm/InputForm";
 import { NewMemoList } from "#c/components/Home/NewMemoList/NewMemoList";
 
 import "#c/components/Home/Home.css";
 
+interface requireAbstract {
+    requireReload: boolean;
+    setRequireReload: Dispatch<SetStateAction<boolean>>;
+}
+
+export const StatusContext = createContext<requireAbstract>({
+    requireReload: true,
+    setRequireReload: {} as Dispatch<SetStateAction<boolean>>,
+});
+
 export const Home: React.FC = () => {
+    const [requireReload, setRequireReload] = useState(true);
+    const homeState: requireAbstract = {
+        requireReload: requireReload,
+        setRequireReload: setRequireReload,
+    };
+
     console.log("home");
+    console.log("now", requireReload);
+    const [addisional, setAddisional] = useState<DataProps[]>([]);
+    const add = {
+        addisional: addisional,
+        setAddisional: setAddisional,
+    };
+
     return (
         <div id="Home--Base">
-            <div id="Home--Input">
-                <InputForm />
-            </div>
-            <div id="Home--NewList">
-                <NewMemoList />
-            </div>
+            <testContext.Provider value={add}>
+                <StatusContext.Provider value={homeState}>
+                    <div id="Home--Input">
+                        <InputForm />
+                    </div>
+                    <div id="Home--NewList">
+                        <NewMemoList />
+                    </div>
+                </StatusContext.Provider>
+            </testContext.Provider>
         </div>
     );
 };
 
-// const name = "test";
-//     const [data, setData] = useState<ResponseProps>({ test: "null" });
-//     useEffect(() => {
-//         function testfetch() {
-//             fetch(`${process.env.REACT_APP_SERVER_HOST}/api/test`)
-//                 .then((res) => {
-//                     res.json().then((json) => {
-//                         setData(json);
-//                     });
-//                 })
-//                 .catch((err) => {
-//                     console.log(err);
-//                 });
-//         }
-//         testfetch();
-//     }, []);
+export const testContext = createContext({
+    addisional: [] as DataProps[],
+    setAddisional: {} as Dispatch<SetStateAction<DataProps[]>>,
+});
 
-//     return (
-//         <div>
-//             <h1>Top {name}</h1>
-//             {data.test}
-//         </div>
-//     );
+interface DataProps {
+    key: string;
+    title: string;
+    date: string;
+}

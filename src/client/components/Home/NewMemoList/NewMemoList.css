@@ -1,0 +1,36 @@
+#NewMemoList--Base {
+    height: 100%;
+    padding: calc((100vh - 64px) * 0.05) 0;
+    padding-right: 20px;
+}
+
+#NewMemoList--Box {
+    height: calc((100vh - 64px) * 0.9);
+    min-height: 450px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: gray;
+}
+
+#NewMemoList--Head {
+    height: 25px;
+}
+
+#NewMemoList--Table {
+    height: calc((100vh - 64px) * 0.9 - 35px);
+    border-radius: 2px;
+    background-color: white;
+}
+
+#NewMemoList--Table th {
+    background-color: whitesmoke;
+}
+
+#NewMemoList--Table tbody td {
+    cursor: pointer;
+}
+
+#NewMemoList--Table .ant-table-body::-webkit-scrollbar {
+    /* Chrome, Safariでのみ有効 */
+    display: none;
+}

@@ -1,8 +1,8 @@
 {
     "__comment": "this is provisional. you can rewrite this json if you have another idea.",
 
-    "title": "test title!!!",
-    "text": "foobar foo bar foo bar bar!!!",
+    "title": "test",
+    "text": "a\na\na\n",
     "other status": {
         "for example": "author, importance, deadline, tags, ..."
     }
