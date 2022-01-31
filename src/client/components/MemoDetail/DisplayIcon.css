@@ -1,0 +1,13 @@
+#MemoDetail--DisplayIcon{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}#MemoDetail--WrapIcon{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: calc(50vh - 164px);
+}
+
+#MemoDetail--LoadingIcon{
+    font-size: 200px;
+}

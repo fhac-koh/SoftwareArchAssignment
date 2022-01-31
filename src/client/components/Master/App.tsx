@@ -2,8 +2,9 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { NavHeader } from "#c/components/NavHeader/NavHeader";
-import { MemoList } from "#c/components/MemoList/MemoList";
 import { Home } from "#c/components/Home/Home";
+import { MemoList } from "#c/components/MemoList/MemoList";
+import { MemoDetail } from "#c/components/MemoDetail/MemoDetail";
 import { InnerPaths } from "#c/routes/InnerPaths";
 
 import "#c/components/Master/App.css";
@@ -19,6 +20,10 @@ export const App: React.FC = () => {
                         <Route
                             path={InnerPaths.memoList}
                             element={<MemoList />}
+                        />
+                        <Route
+                            path={InnerPaths.memoDetail(":memoId")}
+                            element={<MemoDetail />}
                         />
                         <Route
                             path="/*"

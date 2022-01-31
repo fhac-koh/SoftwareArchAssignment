@@ -1,5 +1,5 @@
 export const InnerPaths = {
     home: "/home",
     memoList: "/memos",
-    memoDetail: "/memo",
+    memoDetail: (id : string) => { return `/memo/${id}` },
 } as const;

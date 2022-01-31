@@ -1,0 +1,64 @@
+#MemoDetail--DisplayMemo{
+    padding-top: 3%;
+}
+
+#MemoDetail--TitleVar{
+    padding-left: 10%;
+    padding-right: 20%;
+}
+
+#MemoDetail--TitleZone{
+    padding:5px;
+    border-radius: 10px;
+    border: 3px ridge;
+    background-color: ghostwhite;
+}
+
+#MemoDetail--Title{
+    font-size: 30px;
+
+}
+
+#MemoDetail--BodyVar{
+    padding-top: 10px;
+    padding-left: 10%;
+    padding-right:10%;
+}
+
+#MemoDetail--BodyZone{
+    padding:5px;
+    font-size: 15px;
+    border-radius: 3px;
+    border: 1px inset;
+    background-color: white;
+}
+
+#MemoDetail--Body{
+    white-space: pre-wrap;
+}
+
+#MemoDetail--Buttons{
+    display: flex;
+    float: right;
+    padding-top: 10px;
+    padding-right: 8%;
+    padding-bottom: 30px;
+}
+
+#MemoDetail--Edit{
+    border-color: rgb(135, 187, 57);
+    background-color: rgb(135, 187, 57);
+}
+
+#MemoDetail--Submit{
+    height: 40px;
+}
+
+#MemoDetail--Delete, #MemoDetail--Cancel{
+    padding-left: 10px;
+}
+
+#MemoDetail--ButtonMargin{
+    width: 50px;
+}
+
