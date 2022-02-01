@@ -60,7 +60,7 @@ export default class handler {
         repository
             .deleteMemo(objectid)
             .then(() => {
-                res.send("Add to Database");
+                res.send("Delete to Database");
             })
             .catch((err) => {
                 res.send(err);
